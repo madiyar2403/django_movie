@@ -90,6 +90,28 @@ class MovieShots(models.Model):
         verbose_name_plural = "Кадры из фильма"
 
 
+class RatingStar(models.Model):
+    value = models.PositiveIntegerField('Значение', default=0)
+
+    def __str__(self):
+        return self.value
+
+    class Meta:
+        verbose_name = "Звезда рейтинга"
+        verbose_name_plural = "Звезды рейтинга"
+        
+class Rating(models.Model):
+    ip = models.CharField('IP адрес', max_length=15)
+    star = models.ForeignKey(RatingStar, on_delete=models.CASCADE, verbose_name='Звезда')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name='фильм')
+
+    def __str__(self):
+        return f"{self.star} - {self.movie}"
+
+    class Meta:
+        verbose_name = "Рейтинг"
+        verbose_name_plural = "Рейтинги"
+
 class Reviews(models.Model):
     """Отзывы"""
     email = models.EmailField()
