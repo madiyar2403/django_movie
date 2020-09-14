@@ -2,6 +2,8 @@ from datetime import date
 
 from django.db import models
 # Create your models here.
+from django.urls import reverse
+
 
 
 class Category(models.Model):
@@ -72,6 +74,9 @@ class Movie(models.Model):
     def __str__(self):
         return self.title
 
+    def get_abs_url(self):
+        return reverse('movie_detail', kwargs={'slug':self.url})
+
     class Meta:
         verbose_name = "Фильм"
         verbose_name_plural = "Фильмы"
@@ -96,7 +101,7 @@ class RatingStar(models.Model):
     value = models.PositiveIntegerField('Значение', default=0)
 
     def __str__(self):
-        return self.value
+        return f"{self.value}"
 
     class Meta:
         verbose_name = "Звезда рейтинга"
