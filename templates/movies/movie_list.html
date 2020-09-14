@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>hello</p>
+{% for movie in movies %}
+    <a href="{{ movie.get_abs_url }}">{{ movie.title }}</a>
+    <p>{{ movie.tagline }}</p>
+    <img src={{ movie.poster.url }} height="150px"; width="150px" >
+{% endfor %}
+<br>
+</body>
+</html>
