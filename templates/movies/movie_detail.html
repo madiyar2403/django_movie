@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+    <a href="{{ movie.get_abs_url }}"><h1>{{ movie.title }}</h1></a>
+    <p>{{ movie.tagline }}</p>
+    <img src={{ movie.poster.url }} height="150px"; width="150px" >
+<br>
+</body>
+</html>
